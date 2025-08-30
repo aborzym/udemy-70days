@@ -21,7 +21,12 @@ input {
   border: 1px solid #ccc;
   border-radius: 10px;
 }
-
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
 button {
   padding: 10px 20px;
   background-color: #5cb85c;
@@ -32,6 +37,9 @@ button {
   border-radius: 10px;
 }
 
+.btn-red {
+  background-color: red;
+}
 ul {
   list-style-type: none;
   padding: 0;

@@ -14,6 +14,13 @@ html {
   height: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:visited {
+  color: inherit;
+}
 /* ==============================
    TŁO DLA STRON POZA GŁÓWNĄ
    ============================== */
@@ -90,6 +97,22 @@ button:hover {
   background-color: #0056b3;
 }
 
+.tasks-links {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+button.links {
+  background-color: #6f9dce;
+  color: black;
+}
+
+button.links:hover {
+  background-color: #9babbc;
+}
 /* ==============================
    NAVBAR
    ============================== */
