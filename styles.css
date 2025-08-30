@@ -1,13 +1,31 @@
-body,
-html {
+/* ==============================
+   RESET I BOX-SIZING
+   ============================== */
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: Arial, sans-serif;
   height: 100%;
 }
 
-body {
-  font-family: Arial, sans-serif;
+/* ==============================
+   TŁO DLA STRON POZA GŁÓWNĄ
+   ============================== */
+
+body.no-start-page {
+  background: linear-gradient(to bottom, #203b6f, #4f75a8);
+  min-height: 100vh;
 }
+
+/* ==============================
+   VIDEO BACKGROUND I OVERLAY
+   ============================== */
 
 .video-container {
   position: relative;
@@ -31,7 +49,12 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  cursor: pointer; /* WSKAZUJE, ŻE MOŻNA KLIKNIĘĆ */
 }
+
+/* ==============================
+   TREŚĆ NAD WIDEO
+   ============================== */
 
 .content {
   position: absolute;
@@ -41,12 +64,14 @@ body {
   text-align: center;
   color: white;
 }
+
 h1 {
   font-size: 2.5rem;
 }
 
 p {
   font-size: 1.2rem;
+  padding: 30px;
 }
 
 button {
@@ -62,4 +87,117 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* ==============================
+   NAVBAR
+   ============================== */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f065f;
+  padding: 10px 20px;
+}
+
+.logo {
+  color: whitesmoke;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.navlinks {
+  list-style: none;
+  display: flex;
+}
+
+.navlinks li {
+  padding: 0 15px;
+}
+
+.navlinks a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 18px;
+}
+
+.navlinks a:hover {
+  color: wheat;
+}
+
+/* ==============================
+   BURGER MENU
+   ============================== */
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: whitesmoke;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* ==============================
+   RESPONSYWNOŚĆ DLA EKRANÓW <=768PX
+   ============================== */
+
+@media screen and (max-width: 768px) {
+  .navlinks {
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #0f065f;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+    z-index: 99;
+  }
+  .burger {
+    display: block;
+  }
+}
+
+.navlinks.navactive {
+  transform: translateX(0);
+}
+
+/* ==============================
+   ANIMACJA BURGERA
+   ============================== */
+
+.burger.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.toggle .line2 {
+  opacity: 0;
+}
+
+.burger.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* ==============================
+   MAŁE EKRANY <=480PX
+   ============================== */
+
+@media screen and (max-width: 480px) {
+  .content h1 {
+    font-size: 1.8rem;
+  }
+  .content p {
+    font-size: 1rem;
+    padding: 15px;
+  }
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 }
