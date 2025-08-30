@@ -1,5 +1,59 @@
 * {
-  margin: 0;
   padding: 0;
   font-family: "Arial", sans-serif;
+  line-height: 1.6;
+
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+form {
+  margin-top: 30px;
+  max-width: 500px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+input,
+textarea,
+button {
+  transition: background-color 0.3s ease;
+}
+
+input.error,
+textarea.error {
+  border-color: red;
+}
+button:hover {
+  background-color: #0056b3;
+}
+
+#formMessage {
+  color: red;
+  text-align: center;
+}
+
+#formMessage.success {
+  color: green;
 }
