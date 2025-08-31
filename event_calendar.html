@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="event_calendar.css" />
+
+    <title>Event calendar</title>
+  </head>
+  <body>
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button id="prevMonth">&lt;</button>
+        <h2 id="currentMonth"></h2>
+        <button id="nextMonth">&gt;</button>
+      </div>
+      <table class="calendar">
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody id="calendarBody"></tbody>
+      </table>
+    </div>
+    <div id="eventModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add event</h2>
+        <form id="eventForm">
+          <input type="hidden" id="eventDate" />
+          <label for="eventTitle">Event Title:</label>
+          <input type="text" id="eventTitle" required />
+          <button type="submit">Add event</button>
+        </form>
+      </div>
+    </div>
+    <script src="event_calendar.js"></script>
+  </body>
+</html>
