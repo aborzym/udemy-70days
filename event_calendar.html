@@ -41,6 +41,21 @@
         </form>
       </div>
     </div>
+    <div id="eventEditModal" class="edit-modal">
+      <div class="modal-content">
+        <span id="closeEdit" class="close">&times;</span>
+        <h2>Edit event</h2>
+        <form id="eventEditForm">
+          <input type="hidden" id="eventDate" />
+          <label for="eventTitle">Event Title:</label>
+          <input type="text" id="eventTitle" required />
+          <div class="buttons">
+            <button type="submit">Edit event</button>
+            <button class="red" type="submit">Delete event</button>
+          </div>
+        </form>
+      </div>
+    </div>
     <script src="event_calendar.js"></script>
   </body>
 </html>

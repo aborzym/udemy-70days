@@ -61,6 +61,7 @@ td:hover {
 }
 
 .modal {
+  display: none;
   position: fixed;
   z-index: 99;
   left: 0;
@@ -70,7 +71,17 @@ td:hover {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
-
+.edit-modal {
+  display: none;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
 .modal-content {
   background-color: whitesmoke;
   margin: 15px auto;
@@ -81,6 +92,15 @@ td:hover {
   border-radius: 10px;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.red {
+  background-color: red;
+}
 .close {
   color: #aaa;
   float: right;

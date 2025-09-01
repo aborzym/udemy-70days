@@ -1,0 +1,81 @@
+wyjaśnienie funkcji renderCalendar:
+
+Ustalenie miesiąca i roku źródłowej daty
+
+const year = currentMonth.getFullYear();
+
+const month = currentMonth.getMonth();
+currentMonth to obiekt Date (np. „sierpień 2025”). getMonth() zwraca 0–11 (0 = styczeń).
+
+Wypisanie nagłówka „Miesiąc Rok”
+
+currentMonthDisplay.textContent = currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+Daje np. August 2025. Używasz formatu en-US i opcji: pełna nazwa miesiąca + pełny rok.
+
+Wyczyszczenie tabeli kalendarza
+
+calendarBody.innerHTML = "";
+Zaczynasz rysować od zera (najczęściej calendarBody to <tbody> w tabeli).
+
+Wyliczenie dnia tygodnia dla 1. dnia miesiąca
+
+const firstDayOfMonth = new Date(year, month, 1).getDay();
+getDay() zwraca 0–6 (0 = niedziela, 6 = sobota). To ile „pustych komórek” trzeba wstawić na początku pierwszego wiersza.
+
+Ile dni ma miesiąc
+
+const daysInMonth = new Date(year, month + 1, 0).getDate();
+„Dzień 0” następnego miesiąca to ostatni dzień bieżącego — klasyczny trik, by dostać liczbę dni (28–31).
+
+Licznik dni: start od 1
+
+let date = 1;
+
+Budowa siatki 6×7 (maks. 6 tygodni w widoku)
+
+Zewnętrzna pętla for (let i = 0; i < 6; i++) tworzy wiersze (<tr>).
+
+Wewnętrzna pętla for (let j = 0; j < 7; j++) tworzy komórki (<td>).
+
+Wypełnianie komórek
+
+Pierwszy tydzień – puste leading cells
+if (i === 0 && j < firstDayOfMonth) { cell.innerHTML = ""; }
+Wstawia puste komórki, dopóki nie „dojdziemy” do pierwszego dnia miesiąca.
+
+Po przekroczeniu liczby dni—stop
+else if (date > daysInMonth) { break; }
+Kończy wewnętrzną pętlę (wiersz). Kolejne wiersze nadal się dodadzą, ale będą puste (to OK wizualnie).
+
+Normalny dzień
+
+cell.innerHTML = date;
+const eventKey = `${year} - ${month + 1} - ${date}`;
+if (events[eventKey]) {
+  const eventDiv = document.createElement("div");
+  eventDiv.textContent = events[eventKey];
+  eventDiv.className = "event";
+  cell.appendChild(eventDiv);
+}
+cell.addEventListener("click", () => openEventModal(eventKey));
+date++;
+
+
+— wpisujesz numer dnia, budujesz klucz na podstawie YYYY - M - D, doklejasz wydarzenie (jeśli istnieje), dodajesz klik do otwarcia modala i zwiększasz licznik.
+
+Dołączanie komórek i wiersza do tabeli
+
+row.appendChild(cell); w pętli dni
+
+calendarBody.appendChild(row); po zamknięciu pętli tygodnia
+
+Drobne niuanse, o których warto wiedzieć
+
+Początek tygodnia: getDay() traktuje niedzielę jako 0. Jeśli chcesz, by tydzień zaczynał się od poniedziałku, często robi się:
+
+const firstDayMonStart = (firstDayOfMonth + 6) % 7;
+
+
+break: zatrzymuje tylko wewnętrzną pętlę (dni). To normalne, ale jeśli chcesz zawsze „dociągnąć” pełne 7 kolumn, można po break dopełnić pustymi <td> — nie jest to konieczne.
+
+Format klucza zdarzeń: używasz "YYYY - M - D" (z odstępami). Ważne, by wszędzie używać dokładnie tego samego formatu (np. przy zapisie/odczycie). Często wybiera się ISO "YYYY-MM-DD" (z zerami wiodącymi), bo jest stabilny leksykograficznie.
