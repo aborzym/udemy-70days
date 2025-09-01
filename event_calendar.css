@@ -142,3 +142,15 @@ form button {
 form button:hover {
   background-color: #45a049;
 }
+.event {
+  color: #150a62;
+}
+.delete-event {
+  color: #888;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete-event:hover {
+  color: darkred;
+}

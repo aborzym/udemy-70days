@@ -81,7 +81,30 @@ document.addEventListener("DOMContentLoaded", () => {
               const eventDiv = document.createElement("div"); // Tworzymy div dla eventu
               eventDiv.textContent = event.title; // Wstawiamy tytuł eventu
               eventDiv.className = "event"; // Dodajemy klasę CSS dla stylizacji
+
               cell.appendChild(eventDiv); // Dodajemy event do komórki
+
+              //teraz x do kasowania eventu
+              const deleteBtn = document.createElement("span");
+              deleteBtn.textContent = "x";
+              deleteBtn.className = "delete-event";
+              //Warto też zapisać id eventu w atrybucie np. data-id:
+              deleteBtn.dataset.id = event.id;
+              eventDiv.appendChild(deleteBtn);
+              deleteBtn.addEventListener("click", (e) => {
+                e.stopPropagation(); // ważne! żeby nie otwierać modala po kliknięciu w ×
+                // id eventu do usunięcia
+                const idToDelete = e.target.dataset.id;
+                // filtrujemy tablicę eventów dla tego dnia
+                events[eventKey] = events[eventKey].filter(
+                  (ev) => ev.id != idToDelete
+                );
+                // aktualizujemy localStorage
+                uploadEvents(events);
+
+                // odświeżamy kalendarz
+                renderCalendar();
+              });
             });
           }
 
