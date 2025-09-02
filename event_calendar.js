@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const eventDateInput = document.getElementById("eventDate");
   const eventTitleInput = document.getElementById("eventTitle");
   const closeModalBtn = document.querySelector(".close");
+  const eventDateEdit = document.getElementById("eventDateEdit");
+  const eventTitleEdit = document.getElementById("eventTitleEdit");
+  const eventEditModal = document.getElementById("eventEditModal");
+  const eventEditForm = document.getElementById("eventEditForm");
+  const closeEdit = document.getElementById("closeEdit");
 
   //obsluga localStorage
   const loadEvents = () => {
@@ -81,7 +86,17 @@ document.addEventListener("DOMContentLoaded", () => {
               const eventDiv = document.createElement("div"); // Tworzymy div dla eventu
               eventDiv.textContent = event.title; // Wstawiamy tytuł eventu
               eventDiv.className = "event"; // Dodajemy klasę CSS dla stylizacji
-
+              eventDiv.dataset.id = event.id;
+              eventDiv.dataset.date = eventKey;
+              eventDiv.addEventListener("click", (e) => {
+                e.stopPropagation();
+                //przypisanie danych do formularza edycji
+                eventDateEdit.value = eventKey;
+                eventTitleEdit.value = event.title;
+                //przypisanie ID eventu do dataset formularza
+                eventEditForm.dataset.id = event.id;
+                eventEditModal.style.display = "block";
+              });
               cell.appendChild(eventDiv); // Dodajemy event do komórki
 
               //teraz x do kasowania eventu
@@ -133,6 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeEventModal() {
     eventModal.style.display = "none";
   }
+
+  function closeEditEventModal() {
+    eventEditModal.style.display = "none";
+  }
   //    Funkcja dodawania wydarzeń
   // Zapobiegaj domyślnemu zachowaniu formularza.
   // Pobierz datę i tytuł wydarzenia z odpowiednich pól.
@@ -183,4 +202,32 @@ document.addEventListener("DOMContentLoaded", () => {
   //obsluga formularza dodawania wydarzeń
 
   eventForm.addEventListener("submit", addEvent);
+  eventEditForm.addEventListener("submit", editEvent);
+
+  //Funkcja edycji eventu
+  function editEvent(e) {
+    e.preventDefault();
+    const idToEdit = Number(eventEditForm.dataset.id);
+    const date = eventDateEdit.value;
+    const title = eventTitleEdit.value;
+    const eventToEdit = events[date].find((el) => el.id === idToEdit);
+    eventToEdit.title = title;
+    uploadEvents(events);
+    renderCalendar();
+    eventEditModal.style.display = "none";
+  }
+
+  window.addEventListener("click", (e) => {
+    if (e.target == eventEditModal) {
+      closeEditEventModal();
+    }
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeEditEventModal();
+  });
+
+  closeEdit.addEventListener("click", (e) => {
+    closeEditEventModal();
+  });
 });

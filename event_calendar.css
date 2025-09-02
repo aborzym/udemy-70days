@@ -92,15 +92,6 @@ td:hover {
   border-radius: 10px;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-}
-
-.red {
-  background-color: red;
-}
 .close {
   color: #aaa;
   float: right;
