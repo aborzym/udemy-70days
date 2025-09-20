@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="form_styling.css" />
+
+    <title>Form styling</title>
+  </head>
+  <body>
+    <header class="header">
+      <button class="back-btn"><a href="index.html">BACK</a></button>
+    </header>
+    <div class="container">
+      <h1>Register form</h1>
+      <form id="registrationForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select name="gender" id="gender" required>
+            <option value="">Choose...</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="terms" required />I accept the
+            regulations</label
+          >
+        </div>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+    <script src="form_styling.js"></script>
+  </body>
+</html>

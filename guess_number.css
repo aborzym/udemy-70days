@@ -1,0 +1,83 @@
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: whitesmoke;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #333;
+}
+
+input[type="number"] {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+#message {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+#resetButton {
+  display: none;
+  background-color: #dc3545;
+}
+
+#resetButton:hover {
+  background-color: #c82333;
+}
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 50px;
+  background-color: #95e2f0;
+  margin-bottom: 100px;
+}
+
+.back-btn {
+  border-radius: 5px;
+  background-color: rgb(69, 69, 128);
+  transition: 0.3s ease;
+  padding: 5px 15px;
+}
+
+.back-btn:hover {
+  background-color: rgb(6, 6, 121);
+}
+
+.back-btn a {
+  text-decoration: none;
+  color: whitesmoke;
+}
