@@ -299,3 +299,15 @@ button.links:hover {
   padding: 10px 0;
   height: 150px;
 }
+.tasks-links {
+  margin: 80px;
+}
+.task-buttons {
+  margin-top: 40px;
+  width: 80vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
