@@ -1,3 +1,53 @@
+body,
+h1,
+p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#loader {
+  margin-top: 50px;
+  text-align: center;
+}
+
+#progress-bar {
+  width: 300px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#progress {
+  height: 30px;
+  background-color: #4caf50;
+  width: 0;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+#progress-text {
+  margin-top: 10px;
+  color: #333;
+}
+
+#content {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#content p {
+  margin-top: 10px;
+}
 header {
   width: 100%;
   display: flex;
