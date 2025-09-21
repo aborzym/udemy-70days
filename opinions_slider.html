@@ -3,14 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="xxx.css" />
+    <link rel="stylesheet" href="opinions_slider.css" />
 
-    <title>TITLE</title>
+    <title>Slider with opinions</title>
   </head>
   <body>
     <header class="header">
       <button class="back-btn"><a href="index.html">BACK</a></button>
     </header>
-    <script src="xxx.js"></script>
+    <div class="testimonial-container">
+      <h1>Clients opinions</h1>
+      <div class="slider" id="slider">
+        <div class="slide active">
+          <blockquote>"Świetna usługa! Jestem bardzo zadowolony."</blockquote>
+          <p>- Jan Kowalski</p>
+        </div>
+        <div class="slide">
+          <blockquote>"Fantastyczne doświadczenie. Gorąco polecam!"</blockquote>
+          <p>- Anna Nowak</p>
+        </div>
+        <div class="slide">
+          <blockquote>
+            "Najlepsza firma, z którą miałem do czynienia."
+          </blockquote>
+          <p>- Piotr Wiśniewski</p>
+        </div>
+        <button id="prev" class="nav-btn">←</button>
+        <button id="next" class="nav-btn">→</button>
+      </div>
+    </div>
+    <script src="opinions_slider.js"></script>
   </body>
 </html>
