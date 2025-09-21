@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="code_editor.css" />
+
+    <title>Code editor</title>
+  </head>
+  <body>
+    <header class="header">
+      <button class="back-btn"><a href="index.html">BACK</a></button>
+    </header>
+    <div class="editor-container">
+      <div class="tabs">
+        <button class="tab" data-tab="html">HTML</button
+        ><button class="tab" data-tab="css">CSS</button
+        ><button class="tab" data-tab="js">JS</button>
+      </div>
+      <div class="editor">
+        <textarea
+          id="html"
+          class="code-area"
+          placeholder="Enter HTML code"
+          style="display: ''"
+        ></textarea
+        ><textarea
+          id="css"
+          class="code-area"
+          placeholder="Enter CSS code"
+          style="display: none"
+        ></textarea
+        ><textarea
+          id="js"
+          class="code-area"
+          placeholder="Enter JavaScript code"
+          style="display: none"
+        ></textarea>
+        <button id="run-code">Run code</button>
+        <iframe id="output" class="output-area"></iframe>
+      </div>
+    </div>
+    <script src="code_editor.js"></script>
+  </body>
+</html>
