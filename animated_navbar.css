@@ -71,11 +71,16 @@ section {
 #contact {
   background-color: #ccc;
 }
+
+h1 {
+  margin-bottom: 50px;
+}
 .back-btn {
   border-radius: 5px;
   background-color: rgb(69, 69, 128);
   transition: 0.3s ease;
   padding: 5px 15px;
+  color: white;
 }
 
 .back-btn:hover {
