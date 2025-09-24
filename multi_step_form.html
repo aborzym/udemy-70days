@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="multi_step_form.css" />
+
+    <title>Multi-step form</title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="index.html" class="back-btn">BACK</a>
+    </header>
+    <div class="form-container">
+      <form id="multi-step-form">
+        <div class="step active">
+          <h2>Step 1: Personal information</h2>
+          <label for="firstName">Name:</label>
+          <input type="text" id="firstName" name="firstName" required />
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required />
+          <button type="button" class="next-btn">Next</button>
+        </div>
+        <div class="step">
+          <h2>Step 2: Contact information</h2>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required />
+          <button type="button" class="prev-btn">Wstecz</button>
+          <button type="button" class="next-btn">Dalej</button>
+        </div>
+        <div class="step">
+          <h2>Krok 3: Summary</h2>
+          <p>Check your details before submitting:</p>
+          <ul>
+            <li><strong>Name:</strong> <span id="summaryFirstName"></span></li>
+            <li>
+              <strong>Last Name:</strong> <span id="summaryLastName"></span>
+            </li>
+            <li><strong>Email:</strong> <span id="summaryEmail"></span></li>
+            <li><strong>Phone:</strong> <span id="summaryPhone"></span></li>
+          </ul>
+          <button type="button" class="prev-btn">Back</button>
+          <button type="submit" class="submit-btn">Send</button>
+        </div>
+      </form>
+    </div>
+    <script src="multi_step_form.js"></script>
+  </body>
+</html>
