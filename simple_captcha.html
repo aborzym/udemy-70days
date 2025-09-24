@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="simple_captcha.css" />
+
+    <title>Simple CAPTCHA</title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="index.html" class="back-btn">BACK</a>
+    </header>
+    <h1 class="header-bis">Captcha Validation</h1>
+    <main>
+      <section>
+        <h2>Complete the Captcha</h2>
+        <form id="captchaForm">
+          <div class="form-group">
+            <label for="userInput">Enter the text shown below:</label>
+            <input type="text" id="userInput" name="userInput" required />
+          </div>
+          <div class="captcha-container">
+            <canvas id="captchaCanvas"></canvas>
+            <button id="refreshCaptcha" type="button" class="btn">
+              Refresh Captcha
+            </button>
+            <button class="btn" type="submit">Submit</button>
+          </div>
+          <div id="resultMessage"></div>
+        </form>
+      </section>
+    </main>
+    <script src="simple_captcha.js"></script>
+  </body>
+</html>
