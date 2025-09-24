@@ -1,0 +1,83 @@
+body,
+h1,
+p,
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  transition: transform 0.5s ease;
+}
+
+.navbar.scrolled {
+  background-color: #000;
+  padding: 10px 0;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ff6347;
+}
+
+section {
+  padding: 100px 0;
+  text-align: center;
+}
+
+#home {
+  background-color: #f4f4f4;
+  height: 100vh;
+}
+
+#about,
+#services,
+#contact {
+  height: 100vh;
+}
+
+#about {
+  background-color: #eaeaea;
+}
+
+#services {
+  background-color: #ddd;
+}
+
+#contact {
+  background-color: #ccc;
+}
+.back-btn {
+  border-radius: 5px;
+  background-color: rgb(69, 69, 128);
+  transition: 0.3s ease;
+  padding: 5px 15px;
+}
+
+.back-btn:hover {
+  background-color: rgb(6, 6, 121);
+}
