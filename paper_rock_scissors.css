@@ -10,7 +10,133 @@ body {
   text-align: center;
   color: #333;
 }
+.game-container {
+  margin-top: 30vh;
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+h1 {
+  margin-bottom: 20px;
+}
+.choices {
+  margin-bottom: 20px;
+}
+
+.choice {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 20px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.choice:hover {
+  background-color: #0056b3;
+}
+
+.reset-btn {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.reset-btn:hover {
+  background-color: #0056b3;
+}
+.result {
+  margin: 20px 0;
+}
+
+.result-message {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.score {
+  margin-block: 50px;
+  font-size: 20px;
+}
+
+.score-number {
+  font-size: 25px;
+  font-weight: 900;
+  margin-left: 10px;
+  margin-right: 30px;
+}
+.computer-turn {
+  margin-top: 40px;
+}
+
+.drawing {
+  width: 150px;
+  display: none;
+  font-size: 20px;
+  font-style: italic;
+  padding: 20px 20px;
+  margin: 20px 10px;
+  border-radius: 5px;
+  cursor: wait;
+}
+
+.drawed {
+  width: 150px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px 20px;
+  margin: 20px 10px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.drawed.green {
+  background-color: green;
+}
+
+.drawed.red {
+  background-color: red;
+}
+
+.drawed.blue {
+  background-color: blue;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.shake {
+  animation: shake 1.5s;
+}
 header {
   width: 100%;
   display: flex;

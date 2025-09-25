@@ -11,6 +11,26 @@
     <header class="header">
       <a href="index.html" class="back-btn">BACK</a>
     </header>
+    <div class="game-container">
+      <h1>Rock Paper Scissors</h1>
+      <div class="choices">
+        <button class="choice" data-choice="rock">✊ Rock</button
+        ><button class="choice" data-choice="paper">✋ Paper</button
+        ><button class="choice" data-choice="scissors">✌️ Scissors</button>
+      </div>
+      <div class="computer-turn">
+        <button id="draw" class="drawing">I choose...</button>
+      </div>
+      <div class="result">
+        <p class="score">
+          Player:
+          <span class="score-number" id="player-score">0</span>Computer:
+          <span class="score-number" id="computer-score">0</span>
+        </p>
+        <p class="result-message"></p>
+        <button class="reset-btn">Reset score</button>
+      </div>
+    </div>
     <script src="paper_rock_scissors.js"></script>
   </body>
 </html>
