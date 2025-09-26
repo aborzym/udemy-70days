@@ -11,29 +11,28 @@
     <header class="header">
       <a href="index.html" class="back-btn">BACK</a>
     </header>
-    <a href="./paper_rock_scissors_pvp.html" class="tabs btn"
-      >Player vs Player</a
-    >
+    <a href="./paper_rock_scissors.html" class="tabs btn">Player vs Computer</a>
     <div class="game-container">
       <h1>Rock Paper Scissors</h1>
+      <div id="action" class="action"></div>
       <div class="choices">
         <button class="choice" data-choice="rock">✊ Rock</button
         ><button class="choice" data-choice="paper">✋ Paper</button
         ><button class="choice" data-choice="scissors">✌️ Scissors</button>
       </div>
-      <div class="computer-turn">
-        <button id="draw" class="drawing">I choose...</button>
+      <div class="drawing-container">
+        <button id="draw" class="drawing">Drawing</button>
       </div>
       <div class="result">
-        <p class="result-message"></p>
+        <p class="result-message blue"></p>
         <p class="score">
-          Player:
-          <span class="score-number" id="player-score">0</span>Computer:
-          <span class="score-number" id="computer-score">0</span>
+          Player 1:
+          <span class="score-number" id="player1-score">0</span>Player 2:
+          <span class="score-number" id="player2-score">0</span>
         </p>
         <button class="reset-btn">Reset score</button>
       </div>
     </div>
-    <script src="paper_rock_scissors.js"></script>
+    <script src="paper_rock_scissors_pvp.js"></script>
   </body>
 </html>
