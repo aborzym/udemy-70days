@@ -12,7 +12,15 @@
       <a href="index.html" class="back-btn">BACK</a>
     </header>
     <a href="./paper_rock_scissors.html" class="tabs btn">Player vs Computer</a>
-    <div class="game-container">
+    <div class="players-container">
+      <h2>Enter player names</h2>
+      <label for="name1" class="blue">Player 1:</label>
+      <input type="text" id="name1" placeholder="Enter name" />
+      <label for="name2" class="green">Player 2:</label>
+      <input type="text" id="name2" placeholder="Enter name" />
+      <button type="button" class="btn play-btn">Play game</button>
+    </div>
+    <div class="game-container hidden">
       <h1>Rock Paper Scissors</h1>
       <div id="action" class="action"></div>
       <div class="choices">
@@ -26,11 +34,15 @@
       <div class="result">
         <p class="result-message blue"></p>
         <p class="score">
-          Player 1:
-          <span class="score-number" id="player1-score">0</span>Player 2:
+          <span class="p1-name blue"></span>
+          <span class="score-number" id="player1-score">0</span
+          ><span class="p2-name green"></span>
           <span class="score-number" id="player2-score">0</span>
         </p>
-        <button class="reset-btn">Reset score</button>
+        <div class="reset-btns">
+          <button class="reset-btn">Reset score</button>
+          <button class="change-btn">Change names</button>
+        </div>
       </div>
     </div>
     <script src="paper_rock_scissors_pvp.js"></script>

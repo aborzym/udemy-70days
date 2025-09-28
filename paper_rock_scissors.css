@@ -41,7 +41,13 @@ h1 {
 .choice:hover {
   background-color: #0056b3;
 }
-
+.reset-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 250px;
+  margin: 0 auto;
+}
 .reset-btn {
   font-size: 20px;
   font-weight: bold;
@@ -57,6 +63,23 @@ h1 {
 .reset-btn:hover {
   background-color: #0056b3;
 }
+.change-btn {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.change-btn:hover {
+  background-color: #0056b3;
+}
+
 .result {
   margin: 20px 0;
 }
@@ -156,6 +179,50 @@ h1 {
 
 .shake {
   animation: shake 1.5s;
+}
+
+.players-container {
+  margin-top: 15vh;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.players-container input {
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 1px solid #777;
+  width: 100%;
+}
+.play-btn {
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.play-btn:hover {
+  background-color: #0056b3;
+}
+
+.blue {
+  color: blue;
+}
+
+.green {
+  color: green;
+}
+
+.hidden {
+  display: none;
 }
 header {
   width: 100%;
