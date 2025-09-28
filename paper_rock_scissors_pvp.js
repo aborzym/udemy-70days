@@ -51,11 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentPlayer === 1) {
         player1Choice = choice.getAttribute("data-choice");
         currentPlayer = 2;
-        actionMessage.textContent = player2Message;
+        updateCurrentPlayerVisual();
       } else {
         player2Choice = choice.getAttribute("data-choice");
         currentPlayer = 1;
-        actionMessage.textContent = player1Message;
+        updateCurrentPlayerVisual();
+
         const winner = determineWinner(player1Choice, player2Choice);
         displayResult(winner, player1Choice, player2Choice);
         updateScore(winner);
@@ -107,20 +108,35 @@ document.addEventListener("DOMContentLoaded", () => {
     resultMessage.textContent = "";
     resetScore();
     updateScoreDisplay();
-    actionMessage.textContent = `${player1Name} - make your choice`;
+    currentPlayer = 1;
+    updateCurrentPlayerVisual();
   });
   changeBtn.addEventListener("click", () => {
-    console.log("dupa");
     resultMessage.textContent = "";
     resetScore();
     updateScoreDisplay();
+    currentPlayer = 1;
+    updateCurrentPlayerVisual();
     gameContainer.classList.add("hidden");
     playersContainer.classList.remove("hidden");
     namesInputs.forEach((input) => {
       input.value = "";
     });
   });
+
   function capitalizeFirstLetter(word) {
     return word[0].toUpperCase() + word.slice(1);
+  }
+
+  function updateCurrentPlayerVisual() {
+    if (currentPlayer === 1) {
+      actionMessage.textContent = player1Message;
+      actionMessage.classList.add("blue");
+      actionMessage.classList.remove("green");
+    } else {
+      actionMessage.textContent = player2Message;
+      actionMessage.classList.add("green");
+      actionMessage.classList.remove("blue");
+    }
   }
 });

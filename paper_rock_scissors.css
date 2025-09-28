@@ -18,7 +18,10 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.action {
+  color: blue;
+  font-size: 24px;
+}
 h1 {
   margin-bottom: 20px;
 }
@@ -91,11 +94,14 @@ h1 {
 
 .score {
   margin-block: 50px;
-  font-size: 20px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .score-number {
-  font-size: 25px;
+  font-size: 28px;
   font-weight: 900;
   margin-left: 10px;
   margin-right: 30px;
@@ -129,14 +135,17 @@ h1 {
 
 .drawed.green {
   background-color: green;
+  color: white;
 }
 
 .drawed.red {
   background-color: red;
+  color: white;
 }
 
 .drawed.blue {
   background-color: blue;
+  color: white;
 }
 
 @keyframes shake {
