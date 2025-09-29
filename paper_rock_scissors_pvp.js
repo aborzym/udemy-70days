@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ELEMENTY DOM
   const choices = document.querySelectorAll(".choice");
   const resultMessage = document.querySelector(".result-message");
   const player1ScoreElem = document.getElementById("player1-score");
@@ -13,25 +14,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const p2Name = document.querySelector(".p2-name");
   const startBtn = document.querySelector(".play-btn");
   const changeBtn = document.querySelector(".change-btn");
+
+  // STANY GRACZY I GRA
   let player1Score = 0;
   let player2Score = 0;
-  let player1Choice;
-  let player2Choice;
+  let player1Choice, player2Choice;
   let currentPlayer = 1;
   let player1Name = "";
   let player2Name = "";
   let player1Message = "";
   let player2Message = "";
 
+  // UKRYCIE PRZYCISKU NA START
+  drawingBtn.style.display = "none";
+
+  // START GRY - ustawienie nazw graczy i przejście do planszy
   startBtn.addEventListener("click", () => {
     namesInputs.forEach((input, index) => {
       if (index === 0) {
         player1Name = input.value;
         player1Message = `${player1Name} - make your choice`;
-      }
-      if (index === 1) {
+      } else if (index === 1) {
         player2Name = input.value;
-        player2Message = `${player2Name}  - make your choice`;
+        player2Message = `${player2Name} - make your choice`;
       }
     });
     actionMessage.textContent = player1Message;
@@ -40,56 +45,68 @@ document.addEventListener("DOMContentLoaded", () => {
     playersContainer.classList.add("hidden");
     gameContainer.classList.remove("hidden");
   });
+
+  // ZASADY GRY
   const rules = {
     rock: "scissors",
     scissors: "paper",
     paper: "rock",
   };
 
+  // WYBÓR GRACZY
   choices.forEach((choice) => {
     choice.addEventListener("click", () => {
       if (currentPlayer === 1) {
-        player1Choice = choice.getAttribute("data-choice");
+        player1Choice = choice.dataset.choice;
         currentPlayer = 2;
         updateCurrentPlayerVisual();
       } else {
-        player2Choice = choice.getAttribute("data-choice");
+        player2Choice = choice.dataset.choice;
         currentPlayer = 1;
         updateCurrentPlayerVisual();
 
         const winner = determineWinner(player1Choice, player2Choice);
-        displayResult(winner, player1Choice, player2Choice);
-        updateScore(winner);
+        const winnerName =
+          winner === "draw"
+            ? "Draw"
+            : winner === "player1"
+            ? player1Name
+            : player2Name;
+
+        // ANIMACJA PRZYCISKU I WYNIK
+        draw(winnerName).then(() => {
+          displayResult(winner, player1Choice, player2Choice);
+          updateScore(winner);
+        });
       }
     });
   });
 
-  function determineWinner(player1, player2) {
-    if (player1 === player2) return "draw";
-    return rules[player1] === player2 ? "player1" : "player2";
+  // OKREŚLENIE ZWYCIĘZCY
+  function determineWinner(p1, p2) {
+    if (p1 === p2) return "draw";
+    return rules[p1] === p2 ? "player1" : "player2";
   }
 
-  // drawingBtn.classList.remove("green", "red", "blue");
-  function displayResult(winner, player1Choice, player2Choice) {
+  // WYŚWIETLENIE WYNIKU W TEKŚCIE
+  function displayResult(winner, p1Choice, p2Choice) {
     if (winner === "draw") {
-      resultMessage.textContent = `It's a draw! You both chose ${player1Choice}.`;
+      resultMessage.textContent = `It's a draw! You both chose ${p1Choice}.`;
     } else if (winner === "player1") {
-      resultMessage.textContent = `${player1Name} wins! ${capitalizeFirstLetter(
-        player1Choice
-      )} beats ${player2Choice}.`;
+      resultMessage.textContent = `${capitalizeFirstLetter(
+        p1Choice
+      )} beats ${p2Choice}.`;
     } else {
-      resultMessage.textContent = `${player2Name}  wins! ${capitalizeFirstLetter(
-        player2Choice
-      )} beats ${player1Choice}.`;
+      resultMessage.textContent = `${capitalizeFirstLetter(
+        p2Choice
+      )} beats ${p1Choice}.`;
     }
   }
 
+  // AKTUALIZACJA PUNKTACJI
   function updateScore(winner) {
-    if (winner === "player1") {
-      player1Score++;
-    } else if (winner === "player2") {
-      player2Score++;
-    }
+    if (winner === "player1") player1Score++;
+    if (winner === "player2") player2Score++;
     player1ScoreElem.textContent = player1Score;
     player2ScoreElem.textContent = player2Score;
   }
@@ -104,13 +121,19 @@ document.addEventListener("DOMContentLoaded", () => {
     player2Score = 0;
   }
 
+  // RESET GRY
   resetBtn.addEventListener("click", () => {
     resultMessage.textContent = "";
     resetScore();
     updateScoreDisplay();
     currentPlayer = 1;
     updateCurrentPlayerVisual();
+    drawingBtn.textContent = "Drawing";
+    drawingBtn.className = ""; // usuwa wszystkie klasy
+    drawingBtn.style.display = "none";
   });
+
+  // ZMIANA IMION GRACZY
   changeBtn.addEventListener("click", () => {
     resultMessage.textContent = "";
     resetScore();
@@ -119,15 +142,41 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCurrentPlayerVisual();
     gameContainer.classList.add("hidden");
     playersContainer.classList.remove("hidden");
-    namesInputs.forEach((input) => {
-      input.value = "";
-    });
+    namesInputs.forEach((input) => (input.value = ""));
   });
 
   function capitalizeFirstLetter(word) {
     return word[0].toUpperCase() + word.slice(1);
   }
+  // ANIMACJA PRZYCISKU I KOLOR KLASY
+  function draw(winner) {
+    return new Promise((resolve) => {
+      // ukrycie aktualnego actionMessage na czas animacji
+      actionMessage.textContent = "";
 
+      drawingBtn.style.display = "inline-block";
+      drawingBtn.textContent = "And the winner is...";
+      drawingBtn.className = "shake drawing-btn"; // reset wszystkich klas + dodanie shake
+
+      setTimeout(() => {
+        drawingBtn.className = "drawed"; // reset + drawed
+        // ustawienie koloru w zależności od wyniku
+        if (winner === "Draw") drawingBtn.classList.add("red");
+        else if (winner === player1Name) drawingBtn.classList.add("blue");
+        else drawingBtn.classList.add("green");
+
+        drawingBtn.textContent =
+          winner === "Draw" ? `${winner}!` : `${winner} wins!`;
+
+        // po animacji przywracamy domyślny komunikat akcji (zawsze player1 zaczyna)
+        actionMessage.textContent = player1Message;
+
+        resolve();
+      }, 1200);
+    });
+  }
+
+  // AKTUALNY GRACZ WIDOCZNY NA EKRANIE
   function updateCurrentPlayerVisual() {
     if (currentPlayer === 1) {
       actionMessage.textContent = player1Message;
@@ -140,3 +189,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+/**
+ * Diagram przepływu gry „Kamień, Papier, Nożyce”
+ *
+ * START
+ *   |
+ *   v
+ * [Wpisanie imion graczy] ---> [Kliknięcie "Start"]
+ *   |                              |
+ *   v                              v
+ * [Plansza gry widoczna]        currentPlayer = 1
+ *   |
+ *   v
+ * [Gracz 1 wybiera ruch] ---> currentPlayer = 2
+ *   |
+ *   v
+ * [Gracz 2 wybiera ruch] ---> currentPlayer = 1
+ *   |
+ *   v
+ * [Obliczenie zwycięzcy]
+ *   |
+ *   v
+ * [Animacja przycisku "And the winner is..."]
+ *   |
+ *   v
+ * [Wyświetlenie zwycięzcy w przycisku]
+ *   |  (Kolor: blue - gracz 1, green - gracz 2, red - remis)
+ *   v
+ * [Wyświetlenie tekstowego wyniku starcia]
+ *   |
+ *   v
+ * [Aktualizacja punktacji]
+ *   |
+ *   v
+ * [Przywrócenie komunikatu actionMessage = player1Message]
+ *   |
+ *   v
+ * [Kolejna runda lub Reset / Change]
+ *   |
+ *   v
+ * END
+ */

@@ -11,7 +11,7 @@ body {
   color: #333;
 }
 .game-container {
-  margin-top: 30vh;
+  margin-top: 20vh;
   text-align: center;
   background-color: white;
   padding: 20px;
@@ -121,10 +121,21 @@ h1 {
   cursor: wait;
 }
 
+.drawing-btn {
+  width: 150px;
+  font-size: 20px;
+  font-style: italic;
+  padding: 20px 20px;
+  margin: 20px 10px;
+  border-radius: 5px;
+  cursor: wait;
+}
+
 .drawed {
   width: 150px;
   font-size: 20px;
   font-weight: bold;
+  font-style: normal;
   padding: 20px 20px;
   margin: 20px 10px;
   border: none;

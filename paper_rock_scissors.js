@@ -17,10 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
       updateScore(winner);
     });
   });
-  function getComputerChoice() {
+  async function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
     const choice = choices[Math.floor(Math.random() * choices.length)];
-    return drawComputer(choice).then(() => choice);
+    await drawComputer(choice);
+    return choice;
   }
   function determineWinner(player, computer) {
     if (player === computer) return "draw";
