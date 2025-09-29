@@ -30,6 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // START GRY - ustawienie nazw graczy i przejście do planszy
   startBtn.addEventListener("click", () => {
+    const name1 = namesInputs[0].value.trim();
+    const name2 = namesInputs[1].value.trim();
+
+    if (!name1 || !name2) {
+      alert("Please enter names for both players!");
+      return;
+    }
     namesInputs.forEach((input, index) => {
       if (index === 0) {
         player1Name = input.value;
