@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="interactive_chart.css" />
+    <title>Interactive chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="interactive_chart_data.js" defer></script>
+    <script src="interactive_chart.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <a href="index.html" class="back-btn">BACK</a>
+    </header>
+    <main>
+      <h1>Monthly Gold Price Chart</h1>
+      <section class="controls">
+        <label for="currency">Select Currency:</label>
+        <select id="currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+        </select>
+
+        <label for="time-range">Select Time Range:</label>
+        <select id="time-range">
+          <option value="12">Last 12 Months</option>
+          <option value="36">Last 36 Months</option>
+          <option value="120" selected>Last 120 Months</option>
+        </select>
+      </section>
+      <section class="chart-container">
+        <canvas id="goldChart"></canvas>
+      </section>
+    </main>
+    <footer>
+      <p>Gold Price Data &copy; 2024</p>
+    </footer>
+  </body>
+</html>
